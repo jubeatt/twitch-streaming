@@ -1,11 +1,11 @@
-import { createHashRouter } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router-dom'
 import Root from '../Root'
 import { TopGames } from '../pages/top-games/TopGames'
 import { Favorite } from '../pages/favorite/Favorite'
 import { AllStreams } from '../pages/all-streams/AllStreams'
 import { Search } from '../pages/search/Search'
 
-export const router = createHashRouter([
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <Root />,
@@ -28,4 +28,4 @@ export const router = createHashRouter([
       }
     ]
   }
-])
+], { basename: '/twitch-streaming' })
