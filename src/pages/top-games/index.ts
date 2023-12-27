@@ -1,0 +1,1 @@
+export { TopGames } from './TopGames'
