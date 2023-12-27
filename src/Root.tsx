@@ -20,7 +20,7 @@ function Root() {
         p={2}
         fontSize='sm'
       >
-        © 2023 <Link href='#'>PeaNu.</Link> All Rights Reserved.
+        © 2023 <Link href='https://github.com/jubeatt/twitch-streaming'>PeaNu.</Link> All Rights Reserved.
       </Box>
     </React.Fragment>
   )
