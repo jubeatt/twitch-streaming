@@ -129,7 +129,7 @@ export const StreamCard: React.FC<Props> = ({ stream }) => {
             />
           </Flex>
           <Divider />
-          <Text noOfLines={2}>{stream.title || 'No title.'}</Text>
+          <Text wordBreak='break-word' noOfLines={2}>{stream.title || 'No title.'}</Text>
           <HStack wrap='wrap'>{renderedTags}</HStack>
         </VStack>
       </CardBody>
