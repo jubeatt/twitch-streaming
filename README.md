@@ -52,13 +52,20 @@
 npm ci
 ```
 
-2\. 啟動 dev server：
+2\. 建立 `.env.development` 及 `.env.production` 並填入底下內容：
+
+```
+REACT_APP_CLIENT_ID=<your_client_id>
+REACT_APP_APP_ACCESS_TOKEN=<your_token>
+```
+
+3\. 啟動 dev server：
 
 ```
 npm run start
 ```
 
-3\. 部署至 github：
+4\. 部署至 github：
 
 ```
 npm run deploy
