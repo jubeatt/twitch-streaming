@@ -17,7 +17,7 @@
 - 支援 RWD
 - 支援深淺色模式
 
-網站連結：https://github.com/jubeatt/twitch-streaming
+網站連結：https://jubeatt.github.io/twitch-streaming/
 
 **實況列表：**
 
