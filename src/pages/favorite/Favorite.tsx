@@ -1,4 +1,4 @@
-import { Alert, AlertIcon, Box, CircularProgress, Flex, GridItem, Heading, SimpleGrid, Text } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box, CircularProgress, Flex, GridItem, SimpleGrid } from '@chakra-ui/react'
 import { SectionWrapper } from '../../components/SectionWrapper'
 import { useAppSelector } from '../../app/hooks'
 import { selectAllFavorites } from '../../features/favorite/favoriteSlice'
