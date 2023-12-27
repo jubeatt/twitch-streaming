@@ -1,11 +1,13 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import { apiSlice } from '../features/api/apiSlice'
 import favoriteReducer from '../features/favorite/favoriteSlice'
+import emailReducer from '../features/email/emailSlice'
 import { LocalStorageService } from './localStorage'
 
 export const store = configureStore({
   reducer: {
     favorite: favoriteReducer,
+    email: emailReducer,
     [apiSlice.reducerPath]: apiSlice.reducer
   },
   middleware(getDefaultMiddleware) {

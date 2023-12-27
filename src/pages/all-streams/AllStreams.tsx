@@ -5,7 +5,7 @@ import { ErrorMessage } from '../../components/ErrorMessage'
 import { useGetStreamsQuery, useGetUsersQuery } from '../../features/api/apiSlice'
 import { SectionWrapper } from '../../components/SectionWrapper'
 import { PageDirection } from '../../types'
-import { useAutoScrollToTop } from '../../hooks'
+import { useAutoScrollToTop, useEmailNotify } from '../../hooks'
 
 export const AllStreams: FC = () => {
   const [pagination, setPagination] = useState({ cursor: '', direction: PageDirection.Next, currentPage: 0 })
@@ -24,6 +24,7 @@ export const AllStreams: FC = () => {
 
   useGetUsersQuery(userIds, { skip: !isSuccess || userIds.length < 1 })
   useAutoScrollToTop(streams)
+  useEmailNotify(error)
 
   function handlePageButton(direction: PageDirection): void {
     if (isLoading || isFetching || !isSuccess) {

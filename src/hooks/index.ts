@@ -1,7 +1,11 @@
-import { useEffect } from 'react'
+import { useCallback, useEffect } from 'react'
 import { favoriteAdded, favoriteRemoved } from '../features/favorite/favoriteSlice'
 import { useToast } from '@chakra-ui/react'
 import { useDispatch } from 'react-redux'
+import { sendEmail } from '../features/email/emailSlice'
+import { SerializedError } from '@reduxjs/toolkit'
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
+import { useAppDispatch, useAppSelector } from '../app/hooks'
 
 export const useAutoScrollToTop = <T>(dependency: T) => {
   useEffect(() => {
@@ -41,4 +45,32 @@ export const useFavoriteAction = (showToastOnFinished: boolean = false) => {
   }
 
   return { addToFavorite, removeFromFavorite }
+}
+
+export const useEmailNotify = (error: FetchBaseQueryError | SerializedError | undefined) => {
+  const { isNotified } = useAppSelector((state) => state.email)
+  const dispatch = useAppDispatch()
+  const toast = useToast()
+
+  const emailHandler = useCallback(
+    async (error: FetchBaseQueryError | SerializedError) => {
+      try {
+        await dispatch(sendEmail(error)).unwrap()
+        toast({
+          title: 'We have send an email notification to the developer, please try again later.',
+          colorScheme: 'red',
+          duration: null
+        })
+      } catch (error) {
+        console.error(error)
+      }
+    },
+    [dispatch, toast]
+  )
+
+  useEffect(() => {
+    if (error && !isNotified) {
+      emailHandler(error)
+    }
+  }, [error, emailHandler, isNotified])
 }
