@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Flex, GridItem, SimpleGrid } from '@chakra-ui/react'
+import { Alert, AlertIcon, Box, CircularProgress, Flex, GridItem, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { SectionWrapper } from '../../components/SectionWrapper'
 import { useAppSelector } from '../../app/hooks'
 import { selectAllFavorites } from '../../features/favorite/favoriteSlice'
@@ -13,7 +13,7 @@ export const Favorite = () => {
   const initialFavoritesCount = useRef(favorites.length)
   const { isLoading, isError, error, isSuccess } = useGetUsersQuery(
     favorites.map((favorite) => favorite.userId),
-    { skip: initialFavoritesCount.current > favorites.length }
+    { skip: initialFavoritesCount.current > favorites.length || favorites.length === 0 }
   )
 
   let content
@@ -29,6 +29,16 @@ export const Favorite = () => {
     )
   } else if (isError) {
     content = <ErrorMessage error={error} />
+  } else if (favorites.length === 0) {
+    content = (
+      <Alert
+        status='info'
+        borderRadius='md'
+      >
+        <AlertIcon />
+        You don't have any favorite yet.
+      </Alert>
+    )
   } else if (isSuccess || favorites) {
     content = (
       <>
