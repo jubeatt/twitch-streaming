@@ -55,9 +55,17 @@ npm ci
 2\. 建立 `.env.development` 及 `.env.production` 並填入底下內容：
 
 ```
+# for Twitch
 REACT_APP_CLIENT_ID=<your_client_id>
 REACT_APP_APP_ACCESS_TOKEN=<your_token>
+
+# for EmailJS
+REACT_APP_APP_SERVICE_ID=<emailjs_service_id>
+REACT_APP_APP_TEMPLATE_ID=<emailjs_template_id>
+REACT_APP_APP_USER_ID=<emailjs_user_id>
 ```
+
+註：本專案有使用 [EmailJS](https://www.emailjs.com/) 來啟用寄信的功能（出錯時自動發通知給作者），所以才會需要填入相關的環境設定
 
 3\. 啟動 dev server：
 
