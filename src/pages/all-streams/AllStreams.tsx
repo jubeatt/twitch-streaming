@@ -8,7 +8,11 @@ import { PageDirection } from '../../types'
 import { useAutoScrollToTop, useEmailNotify } from '../../hooks'
 
 export const AllStreams: FC = () => {
-  const [pagination, setPagination] = useState({ cursor: '', direction: PageDirection.Next, currentPage: 0 })
+  const [pagination, setPagination] = useState({
+    cursor: '',
+    direction: PageDirection.Next,
+    currentPage: 0
+  })
   const { data, isError, isSuccess, isFetching, isLoading, error } = useGetStreamsQuery(pagination)
   const lastTimeCursor = useRef('')
 

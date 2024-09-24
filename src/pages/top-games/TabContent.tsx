@@ -11,7 +11,11 @@ interface Props {
 }
 
 export const TabContent: React.FC<Props> = ({ gameId }) => {
-  const [pagination, setPagination] = useState({ cursor: '', direction: PageDirection.Next, currentPage: 0 })
+  const [pagination, setPagination] = useState({
+    cursor: '',
+    direction: PageDirection.Next,
+    currentPage: 0
+  })
   const { data, isLoading, isFetching, isError, isSuccess, error } = useGetStreamsByGameQuery({
     gameId,
     ...pagination
