@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/twitch-streaming/static/js/main.3c60fe6a.js",
+    "main.js": "/twitch-streaming/static/js/main.a1f207bb.js",
     "index.html": "/twitch-streaming/index.html",
-    "main.3c60fe6a.js.map": "/twitch-streaming/static/js/main.3c60fe6a.js.map"
+    "main.a1f207bb.js.map": "/twitch-streaming/static/js/main.a1f207bb.js.map"
   },
   "entrypoints": [
-    "static/js/main.3c60fe6a.js"
+    "static/js/main.a1f207bb.js"
   ]
 }
