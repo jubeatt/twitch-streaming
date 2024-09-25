@@ -4,7 +4,7 @@ import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
 import React from 'react'
 
 interface Props {
-  error: FetchBaseQueryError | SerializedError
+  error: FetchBaseQueryError | SerializedError | Error
 }
 
 export const ErrorMessage: React.FC<Props> = ({ error }) => {

@@ -21,7 +21,8 @@ const menuItems = [
   { label: 'All Streams', path: '/' },
   { label: 'Top 10 Games', path: '/top-games' },
   { label: 'Favorite', path: '/favorite' },
-  { label: 'Search', path: '/search' }
+  { label: 'Search Channel', path: '/search-channel' },
+  { label: 'Search Stream', path: '/search-stream' }
 ]
 
 type MenuProps = {

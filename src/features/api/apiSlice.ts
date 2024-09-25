@@ -28,23 +28,30 @@ export const apiSlice = createApi({
     }
   }),
   endpoints: (builder) => ({
-    getStreams: builder.query<typeof initialStreams, { cursor: string; direction: PageDirection; currentPage: number }>(
-      {
-        query({ cursor, direction }) {
-          let url = '/streams?first=21'
-          return cursor ? url + `&${direction}=${cursor}` : url
-        },
-        serializeQueryArgs(arg) {
-          return arg.endpointName + '_' + arg.queryArgs.currentPage
-        },
-        transformResponse(response: Streams) {
-          return {
-            data: streamsAdapter.setAll(initialStreams.data, response.data),
-            pagination: response.pagination
-          }
+    getStreams: builder.query<
+      typeof initialStreams,
+      { cursor: string; direction: PageDirection; currentPage: number; gameId?: string }
+    >({
+      query({ cursor, direction, gameId = '' }) {
+        let url = '/streams?first=21'
+        if (gameId) {
+          url += `&game_id=${gameId}`
+        }
+        if (cursor) {
+          url += `&${direction}=${cursor}`
+        }
+        return url
+      },
+      serializeQueryArgs(arg) {
+        return arg.endpointName + '_' + arg.queryArgs.currentPage + '_' + arg.queryArgs.gameId
+      },
+      transformResponse(response: Streams) {
+        return {
+          data: streamsAdapter.setAll(initialStreams.data, response.data),
+          pagination: response.pagination
         }
       }
-    ),
+    }),
     getUsers: builder.query<EntityState<User>, string[]>({
       query(usersId) {
         const params = usersId.map((user) => `id=${user}`)
@@ -105,6 +112,11 @@ export const apiSlice = createApi({
 
         return url
       }
+    }),
+    searchGameByName: builder.query<Omit<Games, 'pagination'>, string>({
+      query(gameName) {
+        return `/games?name=${encodeURIComponent(gameName)}`
+      }
     })
   })
 })
@@ -115,7 +127,8 @@ export const {
   useGetStreamsByGameQuery,
   useGetStreamsQuery,
   useGetChannelByUserNameQuery,
-  useLazySearchChannelByUserNameQuery
+  useLazySearchChannelByUserNameQuery,
+  useLazySearchGameByNameQuery
 } = apiSlice
 
 // selectors

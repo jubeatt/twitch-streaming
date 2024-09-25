@@ -3,7 +3,8 @@ import Root from '../Root'
 import { TopGames } from '../pages/top-games/TopGames'
 import { Favorite } from '../pages/favorite/Favorite'
 import { AllStreams } from '../pages/all-streams/AllStreams'
-import { Search } from '../pages/search/Search'
+import { SearchChannel } from '../pages/search-channel'
+import { SearchStream } from '../pages/search-stream'
 
 export const router = createBrowserRouter(
   [
@@ -24,8 +25,12 @@ export const router = createBrowserRouter(
           element: <Favorite />
         },
         {
-          path: '/search',
-          element: <Search />
+          path: '/search-channel',
+          element: <SearchChannel />
+        },
+        {
+          path: '/search-stream',
+          element: <SearchStream />
         }
       ]
     }
