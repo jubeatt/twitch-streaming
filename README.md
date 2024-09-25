@@ -78,3 +78,15 @@ npm run start
 ```
 npm run deploy
 ```
+
+## 備註：重新獲取 token
+
+這段是跟 twitch 拿 token 的指令，只要把 `<client_id>, <client_secret>` 的部分修改成對應的參數就行了（這兩個參數在 twitch dev 網站的 console 頁面）：
+
+```bash
+curl --location 'https://id.twitch.tv/oauth2/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'client_id=<client_id>' \
+--data-urlencode 'client_secret=<client_secret>' \
+--data-urlencode 'grant_type=client_credentials'
+```
